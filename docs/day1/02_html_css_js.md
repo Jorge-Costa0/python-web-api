@@ -159,9 +159,11 @@ Agora vamos ao back-end com Python :)
 # Questões
 
 ## O que significa HTTP?
+(Protocolo de Transferência de Hipertexto), é a base da internet. É o protocolo padrão usado para transferir dados, como páginas web, entre clientes (navegadores) e servidores
+
 
 ## Para que serve o HTML
-
+é a ligunagem de marcação(hyprtext) focado em como o documento é estruturado 
 ## Para que serve o CSS
 
 ## Para que serve o Javascript
