@@ -1,9 +1,9 @@
 # 1 conectar com o banco de dados
 from sqlite3 import connect
-conn = connect('blog.db')
-cursor = conn.cursor()
+conn = connect('blog.db') #conectando e nomeando
+cursor = conn.cursor() # pra poder manipolar os dados usamos cursor()
 
-# 2 definir e criar a table
+# 2 definir e criar a table(tabelas)
 conn.execute(
     '''\
     CREATE TABLE if not exists post (
@@ -15,6 +15,7 @@ conn.execute(
     '''
 )
 
+# 3- criamos os posts iniciais para alimentar o banco de dados
 posts = [
     {
         'title': 'O que é uma API',
@@ -55,16 +56,22 @@ posts = [
 
 # 4 inserimos os posts caso o banco de dados esteja vazio
 count = cursor.execute('SELECT * FROM post;').fetchall()
-if not count:
-    cursor.executemany(
+if not count: #Verifica se a lista está vazia
+    cursor.executemany( #Usa *executemany* para inserir vários posts de uma vez só
         '''\
         INSERT INTO post (title, content, author)
         VALUES (:title, :content, :author);
         ''',
-        posts,
+        posts, #posts é uma lista de dicionários com as chaves title, content e author.
     )
-    conn.commit()
+    conn.commit() #Salva as mudanças no banco de dados. Sem isso, os INSERTs não ficam registrados permanentemente.
+
+
 
 # 5 verificamos que foi realmente inserido
 posts = cursor.execute('SELECT * FROM post;').fetchall()
 assert len(posts) >= 2
+
+''' 5- Rebusca os dados da tabela post.
+Usa assert para verificar se pelo menos 2 posts foram inseridos.
+Se isso não for verdade, o Python lança um erro e o código para.'''
