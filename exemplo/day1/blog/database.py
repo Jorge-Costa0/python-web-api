@@ -51,6 +51,13 @@ posts = [
         JSON (JavaScript Object Notation) é um formato leve para trocar dados entre sistemas. 
         É  como uma linguagem universal que servidores e aplicativos entendem, com estrutura de chave e valor.''',
         'author': 'Dev Gox'
+    },
+    {
+        'title': 'oque é procrastinação?',
+        'content': '''\
+        é basicamente um mau hábito que faz vc deixar uma tarefa importante de lado e se ocupar de tarefas menos importantes naquele exato momento.
+        ''',
+        'author': 'Lio Costa'
     }
 ]
 
