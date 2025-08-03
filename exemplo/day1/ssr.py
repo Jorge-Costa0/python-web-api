@@ -14,7 +14,7 @@ template = '''\
     <ul>
         <li> Nome: {nome}</li>
         <li> cidade: {cidade}</li>
-        <li> cidade: {idade}</li>
+        <li> idade: {idade}</li>
     </ul>
 </body>
 </hml>
