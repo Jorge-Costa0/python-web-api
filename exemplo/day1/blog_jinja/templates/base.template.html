@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>blog</title>
+    <style>
+        a{
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 200vh; /* Página mais longa para testar o scroll */
+            background-color: white;
+            /* Grid estático (base) */
+            background-image: linear-gradient(#e0e0e0 1px, transparent 1px),linear-gradient(90deg, #e0e0e0 1px, transparent 1px);
+            background-size: 30px 30px;
+            /* Ajuste para o efeito de movimento */
+            background-attachment: fixed;
+            position: relative;
+            
+        }
+
+        .content {
+            padding: 50px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+            /* Camada do grid que se move (opcional) */
+        .moving-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(#e0e0e0 1px, transparent 1px),linear-gradient(90deg, #e0e0e0 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.5;
+            pointer-events: none; /* Permite interação com elementos abaixo */
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>{% block headline %} {% endblock %}</h1>
+        <hr />
+        {% block content %} {% endblock %}
+        <hr />
+        <small>{% block flooter%}  © copyright 2026 {% endblock %}</small>
+    </div>
+
+    <script>
+        logo = document.getElementsByTagName("img")[0];
+        logo.onclick = emite_alerta;
+
+        window.addEventListener('scroll', function() {
+        const yOffset = window.pageYOffset;
+        document.body.style.backgroundPosition = `0px ${yOffset * 0.5}px`;
+                
+                // Opcional: ajuste para a camada .moving-grid (efeito mais intenso)
+                // document.querySelector('.moving-grid').style.backgroundPosition = `0px ${yOffset * 0.8}px`;
+        });
+        document.body.style.transform = `perspective(500px) rotateX(${window.scrollY * 0.1}deg)`; 
+    </script>
+</body>
+</html>
