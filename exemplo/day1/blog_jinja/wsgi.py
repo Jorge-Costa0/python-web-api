@@ -3,6 +3,7 @@ import json
 from urllib.parse import parse_qs
 from jinja2 import Environment, FileSystemLoader
 
+
 env = Environment(loader=FileSystemLoader('templates'))
 
 def get_posts_from_database(post_id=None):
@@ -78,8 +79,3 @@ def application(environ, start_response):
     headers = [('Content-type', content_type)]
     start_response(status, headers)
     return [body]
-
-if __name__ == 'name':
-    from wsgiref.simple_server import  make_server
-    server = make_server('0.0.0.0', 8000,application)
-    server.serve_forever()
